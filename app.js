@@ -1,5 +1,6 @@
 const express = require('express')
 const produtoRouter = require('./router/produto_router')
+const usuarioRouter = require('./router/usuario_router')
 const loggerMiddleware = require('./middleware/logger_middleware')
 
 const app = express()
@@ -14,6 +15,9 @@ app.get('/', async (req, res) => {
 })
 
 app.use('/produtos', produtoRouter);
+
+app.use('/usuarios', usuarioRouter);
+
 
 app.listen(port, () => {
   console.log(`API running on port ${port}`)

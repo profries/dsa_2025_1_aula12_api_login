@@ -23,8 +23,34 @@ function buscarPorId(id) {
     }
 }
 
+function buscarPorEmail(email) {
+    let usuario = usuarioRepository.buscarPorEmail(email);
+    if(usuario) {
+        return usuario;
+    }
+    else {
+        throw { id: 404, msg: "Usuario não encontrado!" }
+    }
+}
+
+function verificarLogin(user) {
+    if(user.email) {
+        let usuarioCadastrado = usuarioRepository.buscarPorEmail(user.email);
+        if(usuarioCadastrado) {
+            if(user.senha && user.senha == usuarioCadastrado.senha)
+            {
+                return { mensagem: "sucesso"};
+            }
+        }
+    }
+    throw { id: 401, msg: "Email ou senha invalidos!" }
+
+}
+
 module.exports = {
     listar,
     inserir,
     buscarPorId,
+    buscarPorEmail,
+    verificarLogin
 }

@@ -1,6 +1,7 @@
 const express = require('express')
 const produtoRouter = require('./router/produto_router')
 const usuarioRouter = require('./router/usuario_router')
+const loginController = require('./controller/login_controller')
 const loggerMiddleware = require('./middleware/logger_middleware')
 
 const app = express()
@@ -13,6 +14,8 @@ app.use(loggerMiddleware.realizaLog);
 app.get('/', async (req, res) => {
   res.send('Hello World!')
 })
+
+app.post('/login', loginController.realizarLogin);
 
 app.use('/produtos', produtoRouter);
 

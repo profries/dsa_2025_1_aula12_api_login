@@ -15,6 +15,15 @@ function buscarPorId(id) {
     ));
 }
 
+function buscarPorEmail(email) {
+    return (listaUsuarios.find(
+        function(usuario) {
+            return (usuario.email == email);        
+        }
+    ));
+}
+
+
 function inserir(usuario) {
     if(!usuario || !usuario.email || !usuario.senha) {
         return;
@@ -29,4 +38,5 @@ module.exports = {
     listar,
     inserir,
     buscarPorId,
+    buscarPorEmail
 }

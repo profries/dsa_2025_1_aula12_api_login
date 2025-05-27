@@ -1,4 +1,5 @@
-const usuarioRepository = require('../repository/usuario_repository')
+const usuarioRepository = require('../repository/usuario_repository');
+const tokenService = require('./token_service');
 
 function listar() {
     return usuarioRepository.listar();
@@ -39,7 +40,8 @@ function verificarLogin(user) {
         if(usuarioCadastrado) {
             if(user.senha && user.senha == usuarioCadastrado.senha)
             {
-                return { mensagem: "sucesso"};
+                const token = tokenService.criarToken({ id:usuarioCadastrado.id });
+                return { token: token };
             }
         }
     }

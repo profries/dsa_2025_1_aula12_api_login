@@ -8,6 +8,17 @@ function criarToken(payload){
     return token;
 }
 
+function validarToken(token) {
+    try{
+        const data = jwt.verify(token, PALAVRA_SECRETA);
+        return data;
+    } catch (err) {
+        throw err;
+    }
+
+}
+
 module.exports = {
-    criarToken
+    criarToken,
+    validarToken
 }

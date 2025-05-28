@@ -1,5 +1,9 @@
 let listaUsuarios = [
-    { id:1, email: "admin@mail.com", senha: "123456" }
+    { 
+        id:1, 
+        email: "admin@mail.com", 
+        senha: "$2b$10$LDJxrPooAsmK2NP9hXV8VOwKOtZxZeNdnAAHnqdyA/sbKO9ZCairK" //Senha já com a hash
+    }
 ];
 let autoIncrement = 2;
 
